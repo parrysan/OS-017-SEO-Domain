@@ -43,6 +43,7 @@ created: "2026-07-03"
 | **Project docs** | `./docs/` |
 | **Vault project page** | `Open-Memory-Vault/projects/OS-017-SEO-Domain/README.md` |
 | **GitHub repo** | https://github.com/parrysan/OS-017-SEO-Domain |
+| **Research store** | [OG-Research/OS-017-SEO-Domain](https://drive.google.com/drive/folders/1madR_jsEKKdni9R_E_3geGk0by_GrAb5) (`research/`, `assets/`, `deliverables/`) |
 | **External systems** | Google Search Console (per client, via `gws`), skills.sh registry |
 
 ---
@@ -53,8 +54,9 @@ created: "2026-07-03"
 
 - **Production URL**: none — internal operating environment, not a deployed site
 - **Skills registry**: https://skills.sh/ — search via `npx skills find <query>` (meta-find-skills skill)
-- **Installed ecosystem skills**: see `./docs/seo-domain-design.md` §Toolkit
-- **Credentials**: none stored here — GSC/analytics access via `gws` OAuth; client API keys in global `.env`
+- **Audit engine**: claude-seo plugin (`claude-seo@agricidaniel-claude-seo`, user scope) — `/seo audit|page|schema|geo|content|local|backlinks|drift`
+- **Installed ecosystem skills**: `seo-audit`, `ai-seo`, `programmatic-seo`, `seo` in `~/.agents/skills/` — full toolkit in `./docs/seo-domain-design.md` §Toolkit
+- **Credentials**: none stored here — claude-seo Google creds in `~/.config/claude-seo/` (per-client OAuth at kickoff); client API keys in global `.env`
 
 ---
 
@@ -81,4 +83,4 @@ Markdown-first operating environment — skills, agents, templates, and per-prop
 
 ## Notes for the next session
 
-Last action: initial scaffold + SEO domain design (docs/seo-domain-design.md). Next action: install chosen ecosystem skills, run first pilot audit on a real property. Open question: which property is the pilot (steveapps.co? tartak?).
+Last action: scaffold + founding design (docs/seo-domain-design.md) + full toolkit installed (claude-seo plugin, 4 ecosystem skills). Next action: pilot audit on a real property — needs a fresh session (plugin loads then), Google Cloud API key (PSI, Tier 0) + GSC OAuth (Tier 1). Open question: which property is the pilot (steveapps.co? tartak?).

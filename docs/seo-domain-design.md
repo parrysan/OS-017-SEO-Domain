@@ -79,6 +79,15 @@ Roles are **dispatch profiles** — a subagent prompt + the skill(s) it runs + d
 inputs/outputs — not separately-installed code. The orchestrator is the Claude session
 in this repo; specialists run via the Agent tool (parallel where independent).
 
+**Execution engine:** most technical roles are *executed by* the **claude-seo plugin**
+(AgriciDaniel/claude-seo, 10.4K★ — 25 skills + 18 specialist agents, `/seo audit|page|
+schema|geo|content|local|backlinks|drift`, parallel sub-agent dispatch, PDF reports).
+The table below is the AIOS-side contract: what we dispatch, with what inputs, into
+which files — regardless of whether the muscle is claude-seo, an ecosystem skill, or a
+plain subagent. Two claude-seo patterns are adopted domain-wide: every recommendation
+carries a **falsifiability check** ("how would we know this failed?") + a leading
+indicator, and **drift monitoring** (dated snapshots diffed each cycle).
+
 | Agent | Does | Inputs | Outputs | Dispatch when |
 |---|---|---|---|---|
 | **seo-orchestrator** | The session itself: runs workflows (§4), dispatches specialists, merges findings, applies ICE, owns the plan | `context.md`, prior `decisions.md` | Audit doc, plan, report | Always — it *is* the engagement session |
@@ -159,7 +168,8 @@ CMS/framework, GSC/analytics access, known problems.
 
 **Implementation plan is done when:**
 - Every accepted finding became a ticket with: concrete fix, owner domain, acceptance
-  test, sequence position (quick-win vs strategic, ~60/40 first 90 days).
+  test, **falsifiability check + leading indicator**, sequence position (quick-win vs
+  strategic, ~60/40 first 90 days).
 - Dev tickets are executable in the site repo without re-reading the audit.
 - Nothing generic survived — a ticket that could apply to any website is deleted or made specific.
 
@@ -176,18 +186,44 @@ CMS/framework, GSC/analytics access, known problems.
 
 | Layer | Tool | Status |
 |---|---|---|
+| **Audit engine** | **claude-seo plugin** (AgriciDaniel, 10.4K★) — `/seo` orchestrator, 25 skills, 18 agents, drift monitoring (SQLite), PDF reports | ✅ installed (`claude-seo@agricidaniel-claude-seo`, user scope) |
 | Audit reasoning | `seo-audit` (coreyhaines31, 151K installs) | ✅ installed globally (`~/.agents/skills/`) |
 | GEO/AEO | `ai-seo` (coreyhaines31, 84K) | ✅ installed |
 | Scale pages | `programmatic-seo` (coreyhaines31, 96K) | ✅ installed |
 | Lighthouse-grade technical | `seo` (addyosmani/web-quality-skills, 30K) | ✅ installed |
-| Crawler engine | `audit-website` skill + **squirrel CLI** (230+ rules) | ⚠️ skill installed; `squirrel` binary NOT on PATH — install from https://squirrelscan.com before first crawl |
+| CWV / performance | **PageSpeed Insights API** (free, 25K queries/day) — claude-seo Tier 0, just a Google Cloud API key | ⏳ create API key at first pilot |
+| GSC | claude-seo **Tier 1 OAuth** (GSC + Indexing API); alternative: AminForou/mcp-gsc (1.1K★) | ⏳ run OAuth setup at first pilot; creds land in `~/.config/claude-seo/` |
 | Skill discovery | `meta-find-skills` (npx skills / skills.sh) | ✅ installed |
-| GSC / analytics | `gws` CLI (Google Workspace OAuth) | ✅ authenticated; per-client property access needed at kickoff |
 | Research | `deep-research`, `research`, `last30days` | ✅ existing AIOS domain |
-| Reporting | md → docx/pdf via `anthropic-skills:docx`/`pdf`; slides via `og-design-slides` | ✅ existing |
+| Reporting | claude-seo PDF reports; md → docx/pdf via `anthropic-skills:docx`/`pdf`; slides via `og-design-slides` | ✅ existing |
 | AI visibility measurement | scripted prompt-set runner (src/, python3 stdlib) — Otterly ($29/mo) as paid upgrade if a client retainer justifies it | ⏳ build at first pilot |
+
+**Deferred until a client engagement pays for it** (all pre-wired as claude-seo extensions):
+DataForSEO ($50 min deposit — cheapest SERP/volume data when needed), Firecrawl (500 free
+credits — only for JS-heavy sites), Screaming Frog CLI (£199/yr — only for multi-thousand-page
+audits), SE Ranking / Profound extensions. `audit-website` + squirrel CLI stays optional as a
+second-opinion crawler (binary not installed).
 
 Not chosen (and why): Profound/Peec-class tools — enterprise pricing, wrong tier for SMB
 retainers; "AI rank" trackers — rank order in AI answers is statistically random (SparkToro
 2026); track **share of answer** instead. llms.txt — Google formally ignores it; ship only
 for dev-tool/docs properties, never sell it as SEO work.
+
+---
+
+## Appendix — the video workflow, mapped
+
+The source video (*Systems Made Better*, 2026-06-20) is a live demo of the claude-seo
+plugin. Its five phases map onto this domain as:
+
+| Video phase | This domain |
+|---|---|
+| 1. Toolkit setup (plugin + GSC OAuth) | Installed once, globally (this doc §Toolkit) — never repeated per client |
+| 2. Identity & positioning (brand brief md) | `properties/<domain>/context.md` → synced as `.agents/product-marketing.md`; voice guide via `meta-humanizer` for client-facing prose |
+| 3. Run the audit (`/seo audit` + brief) | W2 diagnostic audit — claude-seo does the sweep, AIOS adds verification, ICE-by-revenue scoring, and the AI-access layer checks |
+| 4. Report (score + Critical/High-impact plan) | `audits/` + report-builder output in `reports/` |
+| 5. Implementation (Claude edits + deploy) | W3 — tickets by owner domain in the *site's* repo, branch-per-task, og-deploy; validation re-crawl closes the loop |
+
+Improvements over the video: durable per-property memory (`decisions.md`), private data
+separation, cross-domain handoffs (design/dev/research), recurring W4 cycle with
+share-of-answer measurement, and skipping its llms.txt step for non-docs properties.
