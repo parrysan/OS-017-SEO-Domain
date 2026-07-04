@@ -209,6 +209,21 @@ retainers; "AI rank" trackers — rank order in AI answers is statistically rand
 2026); track **share of answer** instead. llms.txt — Google formally ignores it; ship only
 for dev-tool/docs properties, never sell it as SEO work.
 
+### Reference implementation — client report as landing page
+
+First built implementation of the client-facing report (2026-07-04), against the
+oganiko.com pilot audit: `OG-019-Phil-v2` branch `feat/seo-audit-landing-page`,
+`src/pages/digital/seoaudit/index.astro`. Pattern: a single Astro page using the site's
+own OGANIKO tokens/layout (no separate template system) — scope-alert banner (only
+renders when the audit reveals a mismatch between claimed and actual site state) → hero →
+KPI score cards (never fabricate a number; show "—" when data is insufficient) → Top-5
+priorities table (the approval ask) → per-category findings grid → CTA band. The
+"Download Full Report (PDF)" button calls `window.print()` against the same page; a
+`.print-only` section (hidden on screen, `@media print { display: block }`) carries the
+full implementation-plan table — so the PDF is genuinely more detailed than the screen
+view, no separate PDF pipeline needed. Reuse this pattern for future engagements before
+building anything new.
+
 ---
 
 ## Appendix — the video workflow, mapped
