@@ -28,6 +28,7 @@ created: "2026-07-03"
 - **Priority**: `medium`
 - **Revenue lane**: `4-aios`
 - **Autonomy mode**: `autopilot` — audits and monitoring cycles run end-to-end; Phil reviews at report and implementation-plan checkpoints.
+- **Skill centre**: `SEO/AEO`
 - **Purpose** (one sentence): The **SEO/AEO Skill Centre** — the AIOS centre of excellence for organic findability: deep audits, AI-search/GEO/AEO readiness, implementation planning, and reporting, dispatchable per website/property for Oganiko's clients. Reference implementation of the skill-centre pattern (`~/OG/ai-os/skill-centres.md`).
 - **Last touched**: `2026-07-03`
 
