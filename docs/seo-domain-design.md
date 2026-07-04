@@ -115,7 +115,7 @@ plan without evidence (URL + observed value).
 4. **Baseline** — parallel: GSC export (gsc-analyst) + crawl (`squirrel`) + prompt-set run (ai-search-agent). Dated files into `data/`.
 
 ### W2 — Diagnostic audit
-1. Dispatch in parallel: technical-seo-audit, ai-search-agent, onpage-optimizer, schema-agent, internal-linking-agent (each reads `context.md` + baseline data).
+1. Dispatch in parallel: technical-seo-audit, ai-search-agent, onpage-optimizer, schema-agent, internal-linking-agent (each reads `context.md` + baseline data). When `context.md` says **Local SEO: yes**, add the local track (`seo-local`/`seo-maps`) and follow `docs/playbooks/local-seo-gbp-playbook.md` — categories/attributes first, map pack over SERP.
 2. Orchestrator merges, dedupes, **verifies** high-impact findings, scores ICE — *weighted by revenue proximity, not tool severity*.
 3. **Checkpoint: Phil reviews** the audit doc (`audits/`).
 4. report-builder produces the client-facing audit report.

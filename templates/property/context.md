@@ -18,7 +18,20 @@
 
 - **Target audience**:
 - **Primary geography / languages**: (DE / PL / FR / UK / US …)
-- **Local SEO relevant?**: yes/no — if yes: NAP, Google Business Profile URL
+- **Local SEO relevant?**: yes/no — if yes, fill the Local SEO block below
+
+## Local SEO block (only if relevant — see docs/playbooks/local-seo-gbp-playbook.md)
+
+- **NAP (exact, canonical)**: name / address / phone — verbatim as it must appear everywhere
+- **Google Business Profile URL**:
+- **Service areas / neighborhoods**: (each one is a location-relevance target)
+- **Average job/order value**: (weights ICE scoring by revenue)
+- **Review baseline**: total / rating / new per month
+- **Competitor GBP URLs**: (enables automatic comparative audits)
+
+| Competitor | GBP URL | Why they win the map pack |
+|---|---|---|
+| | | |
 
 ## Search intent map
 
