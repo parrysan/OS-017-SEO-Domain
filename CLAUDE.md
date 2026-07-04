@@ -77,8 +77,10 @@ Markdown-first operating environment — skills, agents, templates, and per-prop
 
 ## Skills
 
-- **Project-local skills**: none yet — environment skills live in the global library (see design doc §Toolkit)
-- **Most relevant global skills for this project**: `meta-find-skills`, `marketing:seo-audit`, `audit-website`, `deep-research`, `research`, `og-deploy`
+- **Front-door skill**: `og-seo-health-check` (global library) — domain URL → scored SEO/AEO readiness report against this centre's domain law
+- **Intelligence loop**: `docs/intelligence/` — seo-scout-spec.md (weekly Hermes cron, pending install) + notebooklm-standing-prompt.md (monthly LAW CHECK report); pattern generalized in `~/OG/ai-os/skill-centres.md` §Intelligence loop
+- **Project-local skills**: none — environment skills live in the global library (see design doc §Toolkit)
+- **Most relevant global skills for this project**: `og-seo-health-check`, `meta-find-skills`, `research-notebooklm`, `deep-research`, `research`, `og-deploy`
 
 ---
 
