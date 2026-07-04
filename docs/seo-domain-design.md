@@ -1,6 +1,8 @@
-# SEO Domain — Design (OS-017)
+# SEO/AEO Skill Centre — Design (OS-017)
 
-> Founding design for the SEO operating environment inside the AIOS. Status: v1, 2026-07-03.
+> Charter of the AIOS **SEO/AEO Skill Centre** (centre-of-excellence pattern:
+> `~/OG/ai-os/skill-centres.md` — this project is its reference implementation).
+> Status: v1, 2026-07-03; named a skill centre 2026-07-04.
 > Research basis: GEO/AEO state-of-the-art briefing (2026), skills.sh registry survey,
 > installed-skill contract analysis. Inspired by the "toolkit → identity → audit → report →
 > implement" workflow (YouTube: *I Used Claude to Optimise My Site for AI Search & SEO!*),
