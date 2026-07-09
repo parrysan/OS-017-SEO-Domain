@@ -30,7 +30,7 @@ created: "2026-07-03"
 - **Autonomy mode**: `autopilot` — audits and monitoring cycles run end-to-end; Phil reviews at report and implementation-plan checkpoints.
 - **Skill centre**: `SEO/AEO` (code `seo`)
 - **Purpose** (one sentence): The **SEO/AEO Skill Centre** — the AIOS centre of excellence for organic findability: deep audits, AI-search/GEO/AEO readiness, implementation planning, and reporting, dispatchable per website/property for Oganiko's clients. Reference implementation of the skill-centre pattern (`~/OG/ai-os/skill-centres.md`).
-- **Last touched**: `2026-07-09` — renamed from OS-017-SEO-Domain into the OS-000-AIOS family
+- **Last touched**: `2026-07-09` — full skill-registration audit: added `site-architecture`, registered `audit-website` (the crawl engine `squirrel` already referenced by name), added sxo-agent + e-commerce/multilingual/drift dispatch triggers
 
 ---
 
@@ -56,7 +56,7 @@ created: "2026-07-03"
 - **Production URL**: none — internal operating environment, not a deployed site
 - **Skills registry**: https://skills.sh/ — search via `npx skills find <query>` (meta-find-skills skill)
 - **Audit engine**: claude-seo plugin (`claude-seo@agricidaniel-claude-seo`, user scope) — `/seo audit|page|schema|geo|content|local|backlinks|drift`
-- **Installed ecosystem skills**: `seo-audit`, `ai-seo`, `programmatic-seo`, `seo` in `~/.agents/skills/` — full toolkit in `./docs/seo-domain-design.md` §Toolkit
+- **Installed ecosystem skills**: `seo-audit`, `ai-seo`, `programmatic-seo`, `site-architecture`, `seo`, `audit-website` (squirrelscan crawl engine) in `~/.agents/skills/` — full toolkit in `./docs/seo-domain-design.md` §Toolkit
 - **Credentials**: none stored here — claude-seo Google creds in `~/.config/claude-seo/` (per-client OAuth at kickoff); client API keys in global `.env`
 
 ---
@@ -86,4 +86,4 @@ Markdown-first operating environment — skills, agents, templates, and per-prop
 
 ## Notes for the next session
 
-Last action: scaffold + founding design (docs/seo-domain-design.md) + full toolkit installed (claude-seo plugin, 4 ecosystem skills). Next action: pilot audit on a real property — needs a fresh session (plugin loads then), Google Cloud API key (PSI, Tier 0) + GSC OAuth (Tier 1). Open question: which property is the pilot (steveapps.co? tartak?).
+Last action: full skill-registration audit against domain law (§3/§4) — every installed skill now has an explicit dispatch trigger, no orphaned tools. Next action: pilot audit on a real property — needs a fresh session (plugin loads then), Google Cloud API key (PSI, Tier 0) + GSC OAuth (Tier 1). Open question: which property is the pilot (steveapps.co? tartak?).

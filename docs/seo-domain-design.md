@@ -101,6 +101,7 @@ indicator, and **drift monitoring** (dated snapshots diffed each cycle).
 | **content-gap-agent** | Query/competitor gap: what target audience asks that the site doesn't answer; commissions `deep-research` for SERP/competitor teardowns | `context.md`, GSC queries, competitor list | Prioritised content brief list | Strategy phase; quarterly |
 | **programmatic-seo-agent** | Runs `programmatic-seo` skill: when content-gap-agent finds a *repeatable* query pattern (`[service] in [city]`, `[product] vs [product]`) rather than one-off gaps, designs the template + data source + page-set plan | content-gap-agent's brief, `context.md` | Template spec + page-set plan → dev ticket | content-gap-agent flags a scalable pattern (not one-off) |
 | **internal-linking-agent** | Orphan pages, link equity to money pages, anchor quality | Crawl graph | Linking fix list (from → to → anchor) | After technical audit; after new content ships |
+| **sxo-agent** | Runs `claude-seo:seo-sxo`: reads SERPs backwards for money queries — page-type mismatch, persona-scored intent fit; explains *why* an otherwise-optimized page fails to rank | Target queries, live SERP, page content | Page-type mismatch findings + persona scores | Diagnostic audit, for queries stuck outside top 10 despite clean technicals |
 | **implementation-planner** | Converts confirmed findings into tickets: fix, owner domain (content/design/dev), acceptance test, ICE score, sequenced 60/40 quick-wins/strategic | All audit findings + Phil's priorities | `plans/…-implementation-plan.md` | After every audit review checkpoint |
 | **report-builder** | Client-facing narrative: what shipped, KPI trend (conversions, clicks, impressions, share-of-answer), next cycle | Plan, GSC/analytics data, prompt-set results | `reports/…` (md → pdf/doc via existing doc skills) | Audit delivery; monthly |
 
@@ -118,7 +119,11 @@ plan without evidence (URL + observed value).
 4. **Baseline** — parallel: GSC export (gsc-analyst) + crawl (`squirrel`) + prompt-set run (ai-search-agent). Dated files into `data/`.
 
 ### W2 — Diagnostic audit
-1. Dispatch in parallel: technical-seo-audit, ai-search-agent, onpage-optimizer, schema-agent, internal-linking-agent (each reads `context.md` + baseline data). When `context.md` says **Local SEO: yes**, add the local track (`seo-local`/`seo-maps`) and follow `docs/playbooks/local-seo-gbp-playbook.md` — categories/attributes first, map pack over SERP.
+1. Dispatch in parallel: technical-seo-audit, ai-search-agent, onpage-optimizer, schema-agent, internal-linking-agent (each reads `context.md` + baseline data). Conditional tracks, all read from `context.md`:
+   - **Local SEO: yes** → add the local track (`seo-local`/`seo-maps`) and follow `docs/playbooks/local-seo-gbp-playbook.md` — categories/attributes first, map pack over SERP.
+   - **E-commerce: yes** → add `claude-seo:seo-ecommerce` (product schema, Shopping/marketplace visibility, pricing gaps).
+   - **Multilingual: yes** → add `claude-seo:seo-hreflang` (language/region tag validation, canonicalization across locales).
+   - Money queries stuck outside top 10 with clean technicals → dispatch sxo-agent.
 2. Orchestrator merges, dedupes, **verifies** high-impact findings, scores ICE — *weighted by revenue proximity, not tool severity*.
 3. **Checkpoint: Phil reviews** the audit doc (`audits/`).
 4. report-builder produces the client-facing audit report.
@@ -129,7 +134,7 @@ plan without evidence (URL + observed value).
 3. **Validate** — re-crawl changed pages, confirm each acceptance test, log results to `decisions.md`.
 
 ### W4 — Recurring optimisation cycle (monthly)
-1. Pull fresh GSC + analytics; run the fixed prompt set; CWV + coverage check.
+1. Pull fresh GSC + analytics; run the fixed prompt set; CWV + coverage check; run `claude-seo:seo-drift` against the last baseline and flag regressions before scoring new work.
 2. Re-score the backlog (striking-distance movement, decay).
 3. Ship 2–4 prioritised items (mix: technical fix, content update, entity/schema work).
 4. Report within 5 business days of month-end: conversions/AI-referrals → clicks/impressions → **share-of-answer trend** → shipped-work log. Quarterly: full re-crawl + strategy reset.
@@ -195,9 +200,11 @@ CMS/framework, GSC/analytics access, known problems.
 | Scale pages | `programmatic-seo` (coreyhaines31, 96K) | ✅ installed |
 | IA / nav / URL planning | `site-architecture` (coreyhaines31) — pre-build/redesign page hierarchy, internal linking; not XML sitemaps (that's `seo-audit`/claude-seo) | ✅ installed globally |
 | Lighthouse-grade technical | `seo` (addyosmani/web-quality-skills, 30K) | ✅ installed |
-| CWV / performance | **PageSpeed Insights API** (free, 25K queries/day) — claude-seo Tier 0, just a Google Cloud API key | ⏳ create API key at first pilot |
+| **Crawl engine** (what `squirrel` refers to in §3/§4) | `audit-website` — wraps the squirrelscan CLI, 230+ rules across SEO/perf/security/content, LLM-optimized reports | ✅ installed globally — was referenced by name but unregistered until this audit (2026-07-09) |
+| CWV / performance | **PageSpeed Insights API** (free, 25K queries/day) — claude-seo Tier 0, just a Google Cloud API key; free zero-setup alternative: claude-seo extension `seo-unlighthouse` (local Lighthouse CLI, no API quota) | ⏳ create API key at first pilot |
 | GSC | claude-seo **Tier 1 OAuth** (GSC + Indexing API); alternative: AminForou/mcp-gsc (1.1K★) | ⏳ run OAuth setup at first pilot; creds land in `~/.config/claude-seo/` |
 | Skill discovery | `meta-find-skills` (npx skills / skills.sh) | ✅ installed |
+| **Optional extensions** (claude-seo, paid/API-key-gated — activate per-engagement, not default) | `seo-bing` (Bing Webmaster + IndexNow — feeds Copilot citations), `seo-ahrefs`, `seo-profound` / `seo-seranking` (AI share-of-voice tracking, pairs with ai-search-agent's DIY prompt-set baseline), `seo-firecrawl` (alt crawl engine), `seo-image-gen`/banana (asset generation via nanobanana-mcp) | ⏳ none activated — DIY/free paths (prompt-set, squirrel, PSI) cover baseline today |
 | Research | `deep-research`, `research`, `last30days` | ✅ existing AIOS domain |
 | Reporting | claude-seo PDF reports; md → docx/pdf via `anthropic-skills:docx`/`pdf`; slides via `og-design-slides` | ✅ existing |
 | AI visibility measurement | scripted prompt-set runner (src/, python3 stdlib) — Otterly ($29/mo) as paid upgrade if a client retainer justifies it | ⏳ build at first pilot |
