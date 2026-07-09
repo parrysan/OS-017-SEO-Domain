@@ -80,7 +80,9 @@ Markdown-first operating environment — skills, agents, templates, and per-prop
 - **Front-door skill**: `og-seo-health-check` (global library) — domain URL → scored SEO/AEO readiness report against this centre's domain law
 - **Intelligence loop**: `docs/intelligence/` — seo-scout-spec.md (weekly Hermes cron, pending install) + notebooklm-standing-prompt.md (monthly LAW CHECK report); pattern generalized in `~/OG/ai-os/skill-centres.md` §Intelligence loop
 - **Project-local skills**: none — environment skills live in the global library (see design doc §Toolkit)
-- **Most relevant global skills for this project**: `og-seo-health-check`, `meta-find-skills`, `research-notebooklm`, `deep-research`, `research`, `og-deploy`
+- **Ecosystem skills** (installed globally, dispatched per design doc §3/§4): `seo-audit`, `ai-seo`, `programmatic-seo`, `site-architecture`, `seo` (addyosmani/web-quality-skills), `audit-website` (squirrelscan — the crawl engine `squirrel` referenced throughout §3/§4)
+- **claude-seo plugin specialists** (`/seo` commands + Agent-tool subagents, 25 skills/18 agents incl. `seo-sxo`, `seo-ecommerce`, `seo-hreflang`, `seo-drift` added 2026-07-09): full dispatch-profile table is `docs/seo-domain-design.md` §3, not duplicated here
+- **Most relevant cross-domain global skills**: `meta-find-skills`, `research-notebooklm`, `deep-research`, `research`, `og-deploy`
 
 ---
 
