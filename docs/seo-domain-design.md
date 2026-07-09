@@ -99,6 +99,7 @@ indicator, and **drift monitoring** (dated snapshots diffed each cycle).
 | **ai-search-agent** | GEO/AEO layer: runs `ai-seo` skill; AI-crawler access, raw-HTML visibility, citation-worthiness, prompt-set baseline | `context.md`, `prompts.txt`, crawl | AI-readiness findings + share-of-answer baseline | Every diagnostic audit; monthly prompt-set run |
 | **gsc-analyst** | Pulls & reads Search Console via `gws`: striking-distance queries (pos 4–15 × impressions), decay, coverage errors | GSC property access | `data/gsc/` exports + opportunity table | Baseline; monthly cycle |
 | **content-gap-agent** | Query/competitor gap: what target audience asks that the site doesn't answer; commissions `deep-research` for SERP/competitor teardowns | `context.md`, GSC queries, competitor list | Prioritised content brief list | Strategy phase; quarterly |
+| **programmatic-seo-agent** | Runs `programmatic-seo` skill: when content-gap-agent finds a *repeatable* query pattern (`[service] in [city]`, `[product] vs [product]`) rather than one-off gaps, designs the template + data source + page-set plan | content-gap-agent's brief, `context.md` | Template spec + page-set plan → dev ticket | content-gap-agent flags a scalable pattern (not one-off) |
 | **internal-linking-agent** | Orphan pages, link equity to money pages, anchor quality | Crawl graph | Linking fix list (from → to → anchor) | After technical audit; after new content ships |
 | **implementation-planner** | Converts confirmed findings into tickets: fix, owner domain (content/design/dev), acceptance test, ICE score, sequenced 60/40 quick-wins/strategic | All audit findings + Phil's priorities | `plans/…-implementation-plan.md` | After every audit review checkpoint |
 | **report-builder** | Client-facing narrative: what shipped, KPI trend (conversions, clicks, impressions, share-of-answer), next cycle | Plan, GSC/analytics data, prompt-set results | `reports/…` (md → pdf/doc via existing doc skills) | Audit delivery; monthly |
@@ -123,7 +124,7 @@ plan without evidence (URL + observed value).
 4. report-builder produces the client-facing audit report.
 
 ### W3 — Implementation
-1. implementation-planner writes the plan: tickets by owner domain, acceptance tests, 60/40 quick-wins/strategic for the first 90 days.
+1. implementation-planner writes the plan: tickets by owner domain, acceptance tests, 60/40 quick-wins/strategic for the first 90 days. If content-gap-agent surfaced a scalable query pattern, dispatch programmatic-seo-agent first and fold its template/page-set plan into the plan as a dev ticket.
 2. Dev tickets execute in the **site's repo** (branch-per-task, Codex delegation allowed, og-deploy to ship). Design briefs go to the design domain (ODS). Content briefs to content work.
 3. **Validate** — re-crawl changed pages, confirm each acceptance test, log results to `decisions.md`.
 
