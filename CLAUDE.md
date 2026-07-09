@@ -82,6 +82,7 @@ Markdown-first operating environment — skills, agents, templates, and per-prop
 - **Project-local skills**: none — environment skills live in the global library (see design doc §Toolkit)
 - **Ecosystem skills** (installed globally, dispatched per design doc §3/§4): `seo-audit`, `ai-seo`, `programmatic-seo`, `site-architecture`, `seo` (addyosmani/web-quality-skills), `audit-website` (squirrelscan — the crawl engine `squirrel` referenced throughout §3/§4)
 - **claude-seo plugin specialists** (`/seo` commands + Agent-tool subagents, 25 skills/18 agents incl. `seo-sxo`, `seo-ecommerce`, `seo-hreflang`, `seo-drift` added 2026-07-09): full dispatch-profile table is `docs/seo-domain-design.md` §3, not duplicated here
+- **Full live inventory (curated + related)**: OS-009 Mission Dashboard → Skill Centre portal → SEO/AEO (`portal.html#seo`) — "Skills" = the 7 above (dispatched, in domain law); "Related skills" = all 29 claude-seo plugin skills/extensions auto-discovered from the plugin cache, not yet individually curated. Promote a related skill to curated by adding it to `curated_skills` in `OS-009/app/skill_centres.py`.
 - **Most relevant cross-domain global skills**: `meta-find-skills`, `research-notebooklm`, `deep-research`, `research`, `og-deploy`
 
 ---
