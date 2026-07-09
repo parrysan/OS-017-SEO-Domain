@@ -1,9 +1,9 @@
 # NotebookLM standing prompt — "State of SEO/AEO"
 
-> The carefully-written, versioned prompt run against the OS-017 NotebookLM notebook to
+> The carefully-written, versioned prompt run against the OS-000-SEO NotebookLM notebook to
 > generate recurring field reports. NotebookLM's strength: it reasons over the **curated
 > source pile** (everything the scout + Phil feed it), so reports compound as sources
-> accumulate. Managed via the `research-notebooklm` skill (provision an `OS-017-SEO-Domain`
+> accumulate. Managed via the `research-notebooklm` skill (provision an `OS-000-SEO`
 > notebook on first use; scout digests, key articles, and video transcripts get pushed as
 > sources continuously).
 

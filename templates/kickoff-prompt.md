@@ -1,10 +1,10 @@
 # SEO Engagement Kickoff Prompt (reusable)
 
-Copy, fill, paste into a Claude Code session opened in `~/OG/dev/OS-017-SEO-Domain/`:
+Copy, fill, paste into a Claude Code session opened in `~/OG/dev/OS-000-SEO/`:
 
 ---
 
-/og-project OS-017 — new SEO engagement.
+/og-project OS-000-SEO — new SEO engagement.
 
 **Property**
 - Website URL: <https://…>

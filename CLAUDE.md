@@ -1,17 +1,17 @@
 ---
-title: "OS-017 — SEO Domain"
+title: "OS-000-SEO — SEO/AEO Skill Centre"
 type: project-bootstrap
 created: "2026-07-03"
 ---
 
-# OS-017 — SEO Domain
+# OS-000-SEO — SEO/AEO Skill Centre
 
 > **Bootstrap order — read these in order before doing any work in this project:**
 >
 > 1. `~/.claude/CLAUDE.md` → `Open-Memory-Vault/system/identity/MASTER-PROMPT.md` — Phil's identity (auto-loaded via symlink in Claude Code; other tools should mirror this).
 > 2. `~/AGENT.md` → `agent-config/AGENT.md` — global operating manual (work style, skills routing, secrets policy, layering rules in §2.10).
 > 3. `Open-Memory-Vault/AGENTS.md` — vault operating contract (read **only** if you will write to the vault during this session).
-> 4. `Open-Memory-Vault/projects/OS-017-SEO-Domain/README.md` — durable project page (status, decisions, recent activity, vault-side context).
+> 4. `Open-Memory-Vault/projects/OS-000-SEO/README.md` — durable project page (status, decisions, recent activity, vault-side context).
 > 5. **This file (`CLAUDE.md`)** — project-specific overrides and live operational references (below).
 >
 > **The project's `CLAUDE.md` is a bootstrap manifest, not a knowledge dump.** It points at everything else. Durable knowledge lives in the vault project page. Do not duplicate.
@@ -20,17 +20,17 @@ created: "2026-07-03"
 
 ## At a glance
 
-- **Code**: `OS-017`
-- **Name**: SEO Domain
+- **Code**: `OS-000`
+- **Name**: SEO — SEO/AEO Skill Centre
 - **Stakeholder**: Phil (self)
 - **Type**: `aios`
 - **Status**: `active`
 - **Priority**: `medium`
 - **Revenue lane**: `4-aios`
 - **Autonomy mode**: `autopilot` — audits and monitoring cycles run end-to-end; Phil reviews at report and implementation-plan checkpoints.
-- **Skill centre**: `SEO/AEO`
+- **Skill centre**: `SEO/AEO` (code `seo`)
 - **Purpose** (one sentence): The **SEO/AEO Skill Centre** — the AIOS centre of excellence for organic findability: deep audits, AI-search/GEO/AEO readiness, implementation planning, and reporting, dispatchable per website/property for Oganiko's clients. Reference implementation of the skill-centre pattern (`~/OG/ai-os/skill-centres.md`).
-- **Last touched**: `2026-07-03`
+- **Last touched**: `2026-07-09` — renamed from OS-017-SEO-Domain into the OS-000-AIOS family
 
 ---
 
@@ -38,13 +38,13 @@ created: "2026-07-03"
 
 | Resource | Location |
 |---|---|
-| **Code root** | this folder (`dev/OS-017-SEO-Domain/`) |
+| **Code root** | this folder (`dev/OS-000-SEO/`) |
 | **Domain definition + architecture** | `./docs/seo-domain-design.md` |
 | **Per-property engagements** | `./properties/<domain>/` (context, data, audits, plans, reports) |
 | **Project docs** | `./docs/` |
-| **Vault project page** | `Open-Memory-Vault/projects/OS-017-SEO-Domain/README.md` |
-| **GitHub repo** | https://github.com/parrysan/OS-017-SEO-Domain |
-| **Research store** | [OG-Research/OS-017-SEO-Domain](https://drive.google.com/drive/folders/1madR_jsEKKdni9R_E_3geGk0by_GrAb5) (`research/`, `assets/`, `deliverables/`) |
+| **Vault project page** | `Open-Memory-Vault/projects/OS-000-SEO/README.md` |
+| **GitHub repo** | https://github.com/parrysan/OS-000-SEO |
+| **Research store** | [OG-Research/OS-000-SEO](https://drive.google.com/drive/folders/1madR_jsEKKdni9R_E_3geGk0by_GrAb5) (`research/`, `assets/`, `deliverables/`) |
 | **External systems** | Google Search Console (per client, via `gws`), skills.sh registry |
 
 ---

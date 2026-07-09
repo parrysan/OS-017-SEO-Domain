@@ -1,7 +1,7 @@
 # Local SEO / GBP Playbook
 
 > Distilled 2026-07-04 from "AIOS SEO Strategies" (Alventra Marketing's 20-prompt local-SEO
-> stack; source archived in OG-Research/OS-017/research/). Adapted to this domain's
+> stack; source archived in OG-Research/OS-000-SEO/research/). Adapted to this domain's
 > architecture — their browser-scraping execution model is replaced by our API/agent stack.
 > Applies to any property where `context.md` says **Local SEO relevant: yes**.
 

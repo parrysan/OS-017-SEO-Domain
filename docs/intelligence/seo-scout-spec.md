@@ -32,10 +32,10 @@ week 1 (adds the NotebookLM report, see `notebooklm-standing-prompt.md`).
 
 ## Output contract (per run)
 
-1. **Digest file** → `~/OG/dev/OS-017-SEO-Domain/docs/intelligence/digests/YYYY-MM-DD-seo-scout.md`
-   — max 1 page: 3-7 findings, each = claim · source+date · "so what for OS-017" ·
+1. **Digest file** → `~/OG/dev/OS-000-SEO/docs/intelligence/digests/YYYY-MM-DD-seo-scout.md`
+   — max 1 page: 3-7 findings, each = claim · source+date · "so what for OS-000-SEO" ·
    proposed action (`none | playbook edit | domain-law change | tool change`).
-2. **Google Doc** → OS-017 Drive store `research/` folder (id in project CLAUDE.md) via
+2. **Google Doc** → OS-000-SEO Drive store `research/` folder (id in project CLAUDE.md) via
    `gws docs`, same content — Phil's readable/commentable copy.
 3. **Broadcast candidates** → the digest ends with **1-2 "noise" items**: findings
    interesting enough for a social post, each as a 2-3 sentence draft hook (plain voice,

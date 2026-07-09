@@ -1,4 +1,4 @@
-# SEO/AEO Skill Centre — Design (OS-017)
+# SEO/AEO Skill Centre — Design (OS-000-SEO)
 
 > Charter of the AIOS **SEO/AEO Skill Centre** (centre-of-excellence pattern:
 > `~/OG/ai-os/skill-centres.md` — this project is its reference implementation).
@@ -39,7 +39,7 @@ code works — dev. If it answers a market question — research.
 ## 2. Environment architecture
 
 ```
-OS-017-SEO-Domain/
+OS-000-SEO/
 ├── CLAUDE.md                    # bootstrap manifest (core environment definition)
 ├── docs/
 │   ├── seo-domain-design.md     # this file — domain law

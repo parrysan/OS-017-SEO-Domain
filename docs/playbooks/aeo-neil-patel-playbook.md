@@ -3,7 +3,7 @@
 > Distilled 2026-07-04. Neil Patel/NP Digital publishes the most widely-read AEO content
 > on the web; evaluated for adoption into the `ai-search-agent` role (see
 > `docs/seo-domain-design.md` §3). Verdict: reuse the tactical patterns, skip the stats,
-> supplement the technical gaps with domain law already established elsewhere in OS-017.
+> supplement the technical gaps with domain law already established elsewhere in OS-000-SEO.
 
 ## Adoption verdict
 
@@ -27,7 +27,7 @@
 - Treating GBP/NAP hygiene as "AEO" — that's local SEO repackaged under a new label,
   already covered properly in `local-seo-gbp-playbook.md`.
 
-**Gap his material leaves — already covered by OS-017 domain law, not by him:**
+**Gap his material leaves — already covered by OS-000-SEO domain law, not by him:**
 - No stance on llms.txt (neither advocates nor debunks it) — our domain law: ship only for
   dev-tool/docs properties, Google formally ignores it.
 - No discussion of JS-rendering / AI-crawler access — our domain law: AI crawlers don't
