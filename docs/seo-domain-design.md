@@ -192,6 +192,7 @@ CMS/framework, GSC/analytics access, known problems.
 | Audit reasoning | `seo-audit` (coreyhaines31, 151K installs) | ✅ installed globally (`~/.agents/skills/`) |
 | GEO/AEO | `ai-seo` (coreyhaines31, 84K) | ✅ installed |
 | Scale pages | `programmatic-seo` (coreyhaines31, 96K) | ✅ installed |
+| IA / nav / URL planning | `site-architecture` (coreyhaines31) — pre-build/redesign page hierarchy, internal linking; not XML sitemaps (that's `seo-audit`/claude-seo) | ✅ installed globally |
 | Lighthouse-grade technical | `seo` (addyosmani/web-quality-skills, 30K) | ✅ installed |
 | CWV / performance | **PageSpeed Insights API** (free, 25K queries/day) — claude-seo Tier 0, just a Google Cloud API key | ⏳ create API key at first pilot |
 | GSC | claude-seo **Tier 1 OAuth** (GSC + Indexing API); alternative: AminForou/mcp-gsc (1.1K★) | ⏳ run OAuth setup at first pilot; creds land in `~/.config/claude-seo/` |
